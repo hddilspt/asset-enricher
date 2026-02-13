@@ -1,0 +1,6 @@
+flask
+gunicorn
+pandas
+openpyxl
+lxml
+shapely>=2.0.0
