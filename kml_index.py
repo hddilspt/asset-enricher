@@ -1,4 +1,3 @@
-import io
 import os
 import re
 from dataclasses import dataclass
@@ -11,22 +10,53 @@ from shapely.strtree import STRtree
 KML_NS = {"kml": "http://www.opengis.net/kml/2.2"}
 PLACEMARK_TAG = "{http://www.opengis.net/kml/2.2}Placemark"
 
-# Your sector mapping rule from filenames
+
+def normalize_sector(value: str) -> str:
+    """
+    Normalize sector strings from CSV into your canonical values:
+      Retail | Office | Industrial & Logistics
+
+    Adjust this mapping to match your real CSV values.
+    """
+    s = (value or "").strip().lower()
+
+    # examples / aliases
+    if s in {"hsr", "retail"} or "retail" in s:
+        return "Retail"
+    if s in {"office"} or "office" in s:
+        return "Office"
+    if "industrial" in s or "logistics" in s:
+        return "Industrial & Logistics"
+
+    # fallback: title-case it so keys are consistent-ish
+    return (value or "").strip()
+
+
 def infer_sector_from_filename(filename: str) -> Optional[str]:
-    fn = filename.lower()
+    """
+    Infer sector from the *zone* file name. Adjust as needed.
+    """
+    fn = (filename or "").lower()
+
     if "freguesia" in fn:
         return None
+
+    # Your example logic:
     if "hsr" in fn or "retail" in fn:
         return "Retail"
     if "office" in fn:
         return "Office"
     if "industrial" in fn or "logistics" in fn:
         return "Industrial & Logistics"
+
     return None
 
 
 def _parse_kml_coordinates(text: str) -> List[Tuple[float, float]]:
-    # KML coords are lon,lat[,alt] separated by whitespace
+    """
+    KML coordinates are "lon,lat[,alt]" separated by whitespace.
+    Returns list of (lon, lat)
+    """
     coords: List[Tuple[float, float]] = []
     for token in re.split(r"\s+", (text or "").strip()):
         if not token:
@@ -41,21 +71,34 @@ def _parse_kml_coordinates(text: str) -> List[Tuple[float, float]]:
 
 
 def _polygons_from_placemark(pm: etree._Element) -> List[Polygon]:
+    """
+    Extracts polygons from a Placemark. Handles multiple Polygon elements.
+    (If you have MultiGeometry with polygons, this still works via .//kml:Polygon)
+    """
     polys: List[Polygon] = []
+
     for poly_el in pm.findall(".//kml:Polygon", namespaces=KML_NS):
         coords_el = poly_el.find(
-            ".//kml:outerBoundaryIs/kml:LinearRing/kml:coordinates", namespaces=KML_NS
+            ".//kml:outerBoundaryIs/kml:LinearRing/kml:coordinates",
+            namespaces=KML_NS,
         )
         if coords_el is None or not (coords_el.text or "").strip():
             continue
+
         coords = _parse_kml_coordinates(coords_el.text)
         if len(coords) < 3:
             continue
+
+        # close ring if needed
         if coords[0] != coords[-1]:
             coords.append(coords[0])
+
         poly = Polygon(coords)
-        if not poly.is_empty and poly.is_valid:
-            polys.append(poly)
+        if poly.is_empty or not poly.is_valid:
+            continue
+
+        polys.append(poly)
+
     return polys
 
 
@@ -67,7 +110,8 @@ class SpatialIndex:
 
 def build_zone_indexes_from_paths(zone_kml_paths: List[str]) -> Dict[str, SpatialIndex]:
     """
-    Returns sector -> SpatialIndex, where index value is ZoneFull: "Sector - ZoneName"
+    Creates a dict: sector -> SpatialIndex
+    Each polygon maps to ZoneFull = "Sector - ZoneName".
     """
     by_sector_geoms: Dict[str, List[Polygon]] = {}
     by_sector_vals: Dict[str, List[str]] = {}
@@ -80,11 +124,13 @@ def build_zone_indexes_from_paths(zone_kml_paths: List[str]) -> Dict[str, Spatia
 
         doc = etree.parse(path)
         placemarks = doc.findall(".//kml:Placemark", namespaces=KML_NS)
+
         for pm in placemarks:
             name_el = pm.find("kml:name", namespaces=KML_NS)
             zone_name = (name_el.text or "").strip() if name_el is not None else ""
             if not zone_name:
                 continue
+
             zone_full = f"{sector} - {zone_name}"
             polys = _polygons_from_placemark(pm)
             if not polys:
@@ -104,17 +150,23 @@ def build_zone_indexes_from_paths(zone_kml_paths: List[str]) -> Dict[str, Spatia
 
 def build_freguesia_index_from_path(freguesias_kml_path: str) -> SpatialIndex:
     """
-    Builds an index where value is the freguesia name (SimpleData name="Freguesia").
-    Uses iterparse to handle large files.
+    Builds an index mapping polygons -> freguesia name.
+    Uses iterparse for large files.
+    Your file uses <SimpleData name="Freguesia">NAME</SimpleData>.
     """
     geoms: List[Polygon] = []
     vals: List[str] = []
 
     context = etree.iterparse(
-        freguesias_kml_path, events=("end",), tag=PLACEMARK_TAG, huge_tree=True
+        freguesias_kml_path,
+        events=("end",),
+        tag=PLACEMARK_TAG,
+        huge_tree=True,
     )
+
     for _, pm in context:
         freg_name = None
+
         for sd in pm.findall(".//kml:SimpleData", namespaces=KML_NS):
             if sd.get("name") == "Freguesia":
                 freg_name = (sd.text or "").strip()
@@ -137,11 +189,12 @@ def build_freguesia_index_from_path(freguesias_kml_path: str) -> SpatialIndex:
 
 
 def lookup_point(index: SpatialIndex, lat: float, lon: float) -> Optional[str]:
-    # shapely Point uses (x,y) = (lon,lat)
-    pt = Point(float(lon), float(lat))
+    """
+    Returns mapped value if the point is inside/covered by a polygon, else None.
+    """
+    pt = Point(float(lon), float(lat))  # shapely uses x=lon, y=lat
     candidates = index.tree.query(pt)
     for geom in candidates:
-        # covers() includes boundary points; safer than contains()
-        if geom.covers(pt):
+        if geom.covers(pt):  # includes boundary points
             return index.geom_id_to_value.get(id(geom))
     return None
