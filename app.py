@@ -121,10 +121,10 @@ def enrich():
         return jsonify({"error": "output_format must be csv or xlsx"}), 400
 
     # Allow overriding column names from Power Automate later
-    asset_name_col = request.form.get("asset_name_col", "Asset Name")
-    lat_col = request.form.get("lat_col", "Lat")
-    lon_col = request.form.get("lon_col", "Long")
-    sector_col = request.form.get("sector_col", "Sector")
+    asset_name_col = request.form.get("asset_name_col", "[Asset Name]")
+    lat_col = request.form.get("lat_col", "[Lat]")
+    lon_col = request.form.get("lon_col", "[Long]")
+    sector_col = request.form.get("sector_col", "[Sector]")
 
     f = request.files["assets"]
 
@@ -203,3 +203,4 @@ def enrich():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "5000"))
     app.run(host="0.0.0.0", port=port)
+
