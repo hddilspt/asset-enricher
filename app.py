@@ -20,7 +20,6 @@ app = Flask(__name__)
 
 # ---- Config ----
 API_KEY = os.environ.get("API_KEY", "")  # set this in Railway for security
-
 DATA_DIR = os.environ.get("DATA_DIR", "data")
 ZONES_DIR = os.environ.get("ZONES_DIR", os.path.join(DATA_DIR, "zones"))
 
@@ -127,7 +126,6 @@ def enrich():
     sector_col = request.form.get("sector_col", "[Sector]")
 
     f = request.files["assets"]
-
     try:
         df = pd.read_csv(f)
     except Exception as e:
@@ -138,7 +136,9 @@ def enrich():
             return jsonify({"error": f"Missing column '{col}' in assets file"}), 400
 
     zones_out: List[Optional[str]] = []
-    freg_out: List[Optional[str]] = []
+    freguesia_out: List[Optional[str]] = []
+    concelho_out: List[Optional[str]] = []
+    distrito_out: List[Optional[str]] = []
 
     # Iterate rows
     for _, row in df.iterrows():
@@ -151,7 +151,9 @@ def enrich():
             lon = float(row[lon_col])
         except Exception:
             zones_out.append(None)
-            freg_out.append(None)
+            freguesia_out.append(None)
+            concelho_out.append(None)
+            distrito_out.append(None)
             continue
 
         # Zone: only for matching sector index
@@ -161,9 +163,18 @@ def enrich():
             zone_val = lookup_point(sector_index, lat=lat, lon=lon)
         zones_out.append(zone_val)
 
-        # Freguesia: always attempt
-        freg = lookup_point(FREG_INDEX, lat=lat, lon=lon)
-        freg_out.append(freg)
+        # Freguesia (+ Concelho, Distrito)
+        freg_info = lookup_point(FREG_INDEX, lat=lat, lon=lon)
+
+        if isinstance(freg_info, dict):
+            freguesia_out.append(freg_info.get("Freguesia"))
+            concelho_out.append(freg_info.get("Concelho"))
+            distrito_out.append(freg_info.get("Distrito"))
+        else:
+            # Backward-compatible fallback (if index ever returns just a string)
+            freguesia_out.append(freg_info)
+            concelho_out.append(None)
+            distrito_out.append(None)
 
     out = pd.DataFrame(
         {
@@ -171,8 +182,10 @@ def enrich():
             "Lat": df[lat_col],
             "Long": df[lon_col],
             "Sector": df[sector_col],
-            "Zone": zones_out,        # already "Sector - ZoneName"
-            "Freguesia": freg_out,
+            "Zone": zones_out,  # already "Sector - ZoneName"
+            "Freguesia": freguesia_out,
+            "Concelho": concelho_out,
+            "Distrito": distrito_out,
         }
     )
 
@@ -191,6 +204,7 @@ def enrich():
     # xlsx
     with pd.ExcelWriter(buf, engine="openpyxl") as writer:
         out.to_excel(writer, index=False, sheet_name="Assets")
+
     buf.seek(0)
     return send_file(
         buf,
@@ -203,4 +217,3 @@ def enrich():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "5000"))
     app.run(host="0.0.0.0", port=port)
-
