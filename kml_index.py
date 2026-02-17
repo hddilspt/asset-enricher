@@ -1,7 +1,7 @@
 import os
 import re
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple
 
 from lxml import etree
 from shapely.geometry import Point, Polygon
@@ -32,9 +32,9 @@ def normalize_sector(value: str) -> str:
 
 def infer_sector_from_filename(filename: str) -> Optional[str]:
     fn = (filename or "").lower()
+
     if "freguesia" in fn:
         return None
-
     if "hsr" in fn or "retail" in fn:
         return "Retail"
     if "office" in fn:
@@ -46,6 +46,9 @@ def infer_sector_from_filename(filename: str) -> Optional[str]:
 
 
 def _parse_kml_coordinates(text: str) -> List[Tuple[float, float]]:
+    """
+    Parses KML "lon,lat[,alt]" coordinate tokens into [(lon, lat), ...]
+    """
     coords: List[Tuple[float, float]] = []
     for token in re.split(r"\s+", (text or "").strip()):
         if not token:
@@ -73,6 +76,7 @@ def _polygons_from_placemark(pm: etree._Element) -> List[Polygon]:
         if len(coords) < 3:
             continue
 
+        # Ensure ring closure
         if coords[0] != coords[-1]:
             coords.append(coords[0])
 
@@ -85,15 +89,46 @@ def _polygons_from_placemark(pm: etree._Element) -> List[Polygon]:
     return polys
 
 
+def _extract_kml_fields(pm: etree._Element, wanted: List[str]) -> Dict[str, str]:
+    """
+    Extract fields from a Placemark using either:
+      - SchemaData/SimpleData: <SimpleData name="Freguesia">...</SimpleData>
+      - ExtendedData/Data:     <Data name="Freguesia"><value>...</value></Data>
+
+    Returns a dict keyed by lowercase field name.
+    """
+    wanted_lc = {w.strip().lower() for w in wanted}
+    out: Dict[str, str] = {}
+
+    # 1) SchemaData/SimpleData
+    for sd in pm.findall(".//kml:SimpleData", namespaces=KML_NS):
+        k = (sd.get("name") or "").strip().lower()
+        if k in wanted_lc and k not in out:
+            out[k] = (sd.text or "").strip()
+
+    # 2) ExtendedData/Data/value
+    for d in pm.findall(".//kml:ExtendedData//kml:Data", namespaces=KML_NS):
+        k = (d.get("name") or "").strip().lower()
+        if k in wanted_lc and k not in out:
+            v_el = d.find("kml:value", namespaces=KML_NS)
+            out[k] = ((v_el.text if v_el is not None else "") or "").strip()
+
+    return out
+
+
 @dataclass
 class SpatialIndex:
     """
-    - values is aligned to the geometry order used to build STRtree (same order as tree.geometries in Shapely 2).
+    - values is aligned to the geometry order used to build STRtree
+      (same order as tree.geometries in Shapely 2).
     - geom_id_to_value supports Shapely 1, where STRtree.query returns geometry objects.
+
+    NOTE: values may be strings (zones) OR dicts (freguesia info).
     """
+
     tree: STRtree
-    values: List[str]
-    geom_id_to_value: Dict[int, str]
+    values: List[Any]
+    geom_id_to_value: Dict[int, Any]
 
 
 def build_zone_indexes_from_paths(zone_kml_paths: List[str]) -> Dict[str, SpatialIndex]:
@@ -128,17 +163,20 @@ def build_zone_indexes_from_paths(zone_kml_paths: List[str]) -> Dict[str, Spatia
         vals = by_sector_vals[sector]
         tree = STRtree(geoms)
 
-        # For Shapely 1: query returns geometry objects -> we use id(geom) lookup
+        # Shapely 1: query returns geometry objects -> use id(geom) lookup
         geom_id_to_value = {id(g): v for g, v in zip(geoms, vals)}
-
         indexes[sector] = SpatialIndex(tree=tree, values=vals, geom_id_to_value=geom_id_to_value)
 
     return indexes
 
 
 def build_freguesia_index_from_path(freguesias_kml_path: str) -> SpatialIndex:
+    """
+    Builds an STRtree index of freguesia polygons, storing a dict per polygon:
+      {"Freguesia": ..., "Concelho": ..., "Distrito": ...}
+    """
     geoms: List[Polygon] = []
-    vals: List[str] = []
+    vals: List[Any] = []
 
     context = etree.iterparse(
         freguesias_kml_path,
@@ -148,17 +186,20 @@ def build_freguesia_index_from_path(freguesias_kml_path: str) -> SpatialIndex:
     )
 
     for _, pm in context:
-        freg_name = None
-        for sd in pm.findall(".//kml:SimpleData", namespaces=KML_NS):
-            if sd.get("name") == "Freguesia":
-                freg_name = (sd.text or "").strip()
-                break
+        fields = _extract_kml_fields(pm, ["Freguesia", "Concelho", "Distrito"])
+        freg_name = fields.get("freguesia")
 
         if freg_name:
             polys = _polygons_from_placemark(pm)
-            for poly in polys:
-                geoms.append(poly)
-                vals.append(freg_name)
+            if polys:
+                value_obj = {
+                    "Freguesia": freg_name,
+                    "Concelho": fields.get("concelho") or None,
+                    "Distrito": fields.get("distrito") or None,
+                }
+                for poly in polys:
+                    geoms.append(poly)
+                    vals.append(value_obj)
 
         # free memory
         pm.clear()
@@ -170,48 +211,49 @@ def build_freguesia_index_from_path(freguesias_kml_path: str) -> SpatialIndex:
     return SpatialIndex(tree=tree, values=vals, geom_id_to_value=geom_id_to_value)
 
 
-def lookup_point(index: SpatialIndex, lat: float, lon: float) -> Optional[str]:
+def lookup_point(index: SpatialIndex, lat: float, lon: float) -> Optional[Any]:
     """
     Works with:
-    - Shapely 2.x: STRtree.query returns numpy integer indices (or an Nx2 array for array-like inputs)
-    - Shapely 1.x: STRtree.query returns geometry objects
+      - Shapely 2.x: STRtree.query returns numpy integer indices (or Nx2 pairs for bulk queries)
+      - Shapely 1.x: STRtree.query returns geometry objects
     """
     pt = Point(float(lon), float(lat))
-
     candidates = index.tree.query(pt)
     if candidates is None:
         return None
 
-    # Shapely 2 can return an (N,2) array of index pairs for array-like queries.
-    # For a single geometry, we might still see just indices, but we handle both.
+    # Shapely 2: candidates is often a numpy array of indices
     try:
-        import numpy as np  # Shapely 2 depends on numpy
-        if isinstance(candidates, np.ndarray) and candidates.ndim == 2 and candidates.shape[1] == 2:
-            tree_indices = candidates[:, 1]
-        else:
-            tree_indices = candidates
+        import numpy as np  # shapely 2 typically depends on numpy
+
+        if isinstance(candidates, np.ndarray):
+            if candidates.ndim == 2 and candidates.shape[1] == 2:
+                # array-like query form -> second column is tree index
+                indices = candidates[:, 1]
+            else:
+                indices = candidates
+
+            geoms = getattr(index.tree, "geometries", None)
+            if geoms is None:
+                return None
+
+            for item in indices:
+                try:
+                    i = int(item)
+                except Exception:
+                    continue
+
+                if i < 0 or i >= len(index.values):
+                    continue
+
+                g = geoms[i]
+                if g.covers(pt):
+                    return index.values[i]
+            return None
     except Exception:
-        tree_indices = candidates
+        pass
 
-    # Case A: indices (Shapely 2)
-    for item in tree_indices:
-        # item can be numpy.int64, int, etc.
-        try:
-            i = int(item)
-        except Exception:
-            i = None
-
-        if i is not None:
-            # Shapely 2 provides tree.geometries aligned with indices :contentReference[oaicite:1]{index=1}
-            geom = getattr(index.tree, "geometries", None)
-            if geom is None:
-                break  # can't resolve indices -> fallback below
-
-            g = geom[i]
-            if g.covers(pt):
-                return index.values[i] if i < len(index.values) else None
-
-    # Case B: geometries (Shapely 1)
+    # Shapely 1: candidates are geometry objects
     for geom in candidates:
         if hasattr(geom, "covers") and geom.covers(pt):
             return index.geom_id_to_value.get(id(geom))
