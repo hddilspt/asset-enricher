@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>HSR_Porto</name>
+	<open>1</open>
+	<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=40</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=40">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=40</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=42</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=41">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=41</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=410">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=46</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=45</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=42">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=42</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=41</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=44">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=47</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=48</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=46">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=48</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=49</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=47">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=49</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=410</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=48">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=410</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=47</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon?color=1976d2&amp;id=2000&amp;scale=49">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon?color=1976d2&amp;id=2000&amp;scale=45</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon?color=1976d2&amp;id=2000&amp;scale=44</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0055aa</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>800055aa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0055aa</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>800055aa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=4">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b3ffffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=40">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00aaaa</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>8000aaaa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=41">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00aaff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>8000aaff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=410">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff2dc0fb</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b358eeff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=42">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffffff55</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>80ffff00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=44">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff2f2fd3</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b35053ef</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=45">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffd27619</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b3f5a542</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=47">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffa21f7b</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b3bc47ab</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=48">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff0055ff</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b30055ff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_icon?color=1976d2&amp;id=2000&amp;scale=49">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff6b7900</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b39aa626</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff000000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>80000000</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=4">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00aaaa</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>8000aaaa</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=40">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffffff55</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>80ffff00</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=41">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b3ffffff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=410">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffa21f7b</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b3bc47ab</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=42">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff00aaff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>8000aaff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=45">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff2f2fd3</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b35053ef</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=46">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffd27619</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b3f5a542</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=47">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff0055ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b30055ff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=48">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff6b7900</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b39aa626</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_icon?color=1976d2&amp;id=2000&amp;scale=49">
+		<IconStyle>
+			<Icon>
+				<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+			</Icon>
+			<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<BalloonStyle>
+			<displayMode>hide</displayMode>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff2dc0fb</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>b358eeff</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff000000</color>
+		</LineStyle>
+		<PolyStyle>
+			<color>80000000</color>
+		</PolyStyle>
+	</Style>
+	<Placemark id="08C94669FE3D54A91FD7">
+		<name>Av. Boavista</name>
+		<LookAt>
+			<longitude>-8.638625571765154</longitude>
+			<latitude>41.15892665938404</latitude>
+			<altitude>-1.414648398423424e-09</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>2138.608157461161</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=47</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.637891713917904,41.1602417191308,0 -8.641091978725591,41.1608892498891,0 -8.642943321708277,41.15953903767171,0 -8.636007231720285,41.15852441017474,0 -8.632813004385479,41.1580908668456,0 -8.631750730873106,41.15789884568635,0 -8.63066691842158,41.15705678439548,0 -8.630088147385234,41.15672913044359,0 -8.62953186807281,41.15648580495419,0 -8.628267407744756,41.15667766913405,0 -8.627943394232656,41.15684172994779,0 -8.627504627050898,41.15703619882384,0 -8.627222914645404,41.15755834395353,0 -8.627111046341774,41.15800858379541,0 -8.627149299867222,41.1584047432646,0 -8.62725421942913,41.15863718505989,0 -8.627796363928384,41.15925470095901,0 -8.628370448290521,41.15951982290652,0 -8.628737876014608,41.15956372760007,0 -8.629521789185524,41.15962156397497,0 -8.630389544173271,41.15933899523313,0 -8.630640072695869,41.1593572604033,0 -8.630878006193601,41.15949365144951,0 -8.631163925654759,41.15935686826882,0 -8.631378363967576,41.15919093448592,0 -8.631524844317255,41.15903828935656,0 -8.634234961474474,41.15948845742743,0 -8.637891713917904,41.1602417191308,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0F5DF8CADE3D54AAE68C">
+		<name>Aliados</name>
+		<LookAt>
+			<longitude>-8.615288381998445</longitude>
+			<latitude>41.15067613844042</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>4112.553718712322</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=410</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.612228405058421,41.14605521728084,0 -8.61051132102814,41.14611630405676,0 -8.610166312554998,41.14773267435227,0 -8.609866299955085,41.14872419967057,0 -8.60951119836985,41.14913997820466,0 -8.609426371915937,41.15015788362221,0 -8.610225171918671,41.150595998323,0 -8.61084690843726,41.15061366459275,0 -8.612102142497104,41.15025019782107,0 -8.612157154236218,41.14835822721918,0 -8.612225772394893,41.14810971661426,0 -8.612176195040382,41.14797553862066,0 -8.612228405058421,41.14605521728084,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0673859C643D54AD7521">
+		<name>Clérigos</name>
+		<LookAt>
+			<longitude>-8.615647026186602</longitude>
+			<latitude>41.14578412752788</latitude>
+			<altitude>0.0002552435958791399</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1139.923512762367</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=48</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.615130579417572,41.14723642690682,0 -8.615500841959799,41.14550402816854,0 -8.615575591382971,41.1452561753725,0 -8.615472527442478,41.14508826501293,0 -8.615472525684574,41.14495869753752,0 -8.613445318550495,41.1454744762116,0 -8.613256849320074,41.14555742024239,0 -8.612694596495814,41.14554843098594,0 -8.612709596914051,41.14547870192168,0 -8.612260530103894,41.14520987016402,0 -8.612120742370315,41.14534013699588,0 -8.612028776863776,41.14535815231896,0 -8.61219247390393,41.14563670299157,0 -8.612231074517405,41.1460072423186,0 -8.612251931921529,41.14622373673485,0 -8.613555172684626,41.14631689110503,0 -8.615130579417572,41.14723642690682,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0BDA8897D33D54B11677">
+		<name>Flores/Mouzinho da Silveira</name>
+		<LookAt>
+			<longitude>-8.613795297128583</longitude>
+			<latitude>41.14341824604278</latitude>
+			<altitude>5.953362168748622</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>411.4261083234481</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=46</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.610844339062918,41.14508456102454,0 -8.610886311181858,41.14538580662844,0 -8.611324154117945,41.14550226182585,0 -8.611557149968318,41.14530526833052,0 -8.612482933600583,41.14489399546429,0 -8.613863279155462,41.14425762508961,0 -8.614906946253406,41.14372131893993,0 -8.615251178821705,41.14317209975285,0 -8.615013927951637,41.1427887805501,0 -8.614431611045381,41.14253176750344,0 -8.614171043994975,41.14257052087802,0 -8.613687740483304,41.14271407012911,0 -8.611964900012028,41.14383250367911,0 -8.611131128814025,41.14451373658986,0 -8.610844339062918,41.14508456102454,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="00ED6F2A1C3D54B67904">
+		<name>Sta Catarina</name>
+		<LookAt>
+			<longitude>-8.615368004464155</longitude>
+			<latitude>41.14849497540087</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>3217.920267048328</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=49</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.607883290320537,41.14609959520248,0 -8.606697305502065,41.1459677225512,0 -8.606238839202829,41.14657450098701,0 -8.605133959007196,41.14951798536305,0 -8.604546491717951,41.15099104547615,0 -8.604287997761791,41.15247954815082,0 -8.604256101159271,41.15355985170435,0 -8.605153509144554,41.15353853686238,0 -8.605142047277198,41.15264471485661,0 -8.605363539755718,41.1519409413992,0 -8.606038271011585,41.15028481427386,0 -8.607590874150199,41.150622946224,0 -8.608562192074302,41.14865356518588,0 -8.607026867673337,41.1481446991456,0 -8.607883290320537,41.14609959520248,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Foz do Douro</name>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=41</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.646826941885944,41.1483944747444,0 -8.644586505786421,41.14813811462231,0 -8.642012281240545,41.14786697156986,0 -8.640635816112148,41.14834204732878,0 -8.640834855126458,41.14901272396428,0 -8.641787050085998,41.14914929419768,0 -8.643176158235747,41.14958878839178,0 -8.644339587515331,41.15023893117227,0 -8.644651820682293,41.15160795400096,0 -8.644676903000315,41.15290127424332,0 -8.644777869414664,41.15375669169624,0 -8.645322876264375,41.15428498255279,0 -8.646206291472641,41.15422935111678,0 -8.649722421411708,41.15411592329166,0 -8.651809879885274,41.15222428875575,0 -8.654939690941319,41.15221352237522,0 -8.655501370695086,41.15200689220037,0 -8.657298454218468,41.15108861390353,0 -8.658886411214365,41.15073037735539,0 -8.660491632666997,41.15055421809905,0 -8.664436580559629,41.15056658261573,0 -8.667257447326262,41.15140175503691,0 -8.669492883401281,41.15246429554306,0 -8.67226013554887,41.15470091653709,0 -8.6734527221892,41.15613421249704,0 -8.676940941768516,41.15986471353484,0 -8.682223985042487,41.16529536948219,0 -8.682919062269452,41.16763920298099,0 -8.688083408108461,41.16867390033711,0 -8.689431055957307,41.16857525430973,0 -8.689459402089708,41.16766239313179,0 -8.688036712675043,41.16656000002833,0 -8.686123651547511,41.16367112278004,0 -8.684425155288171,41.15908980192982,0 -8.681246634081734,41.15633487940132,0 -8.678379529179631,41.15280565707252,0 -8.67762476819459,41.15119680334128,0 -8.674542415796699,41.14775260700709,0 -8.66696291649127,41.14726281868814,0 -8.664691429396322,41.1479510632122,0 -8.662595409242222,41.14691353206454,0 -8.657842799700038,41.14667318039449,0 -8.654202657483355,41.14827803495525,0 -8.64937856759369,41.14787654979669,0 -8.646826941885944,41.1483944747444,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Matosinhos</name>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=44</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.687917078589644,41.18908846210116,0 -8.692099142377137,41.18912195035636,0 -8.698149277904285,41.18515627591613,0 -8.698429432157262,41.1837648513967,0 -8.695894115242304,41.18107034784053,0 -8.694337403542256,41.1801496279672,0 -8.692596989808347,41.17819365686383,0 -8.690387289955892,41.17563761158946,0 -8.688934129758417,41.17342242271344,0 -8.687118288310263,41.17329759848363,0 -8.683598231287148,41.17359911764729,0 -8.681320697257666,41.17254458787669,0 -8.679291199224657,41.17168670517415,0 -8.677483930288242,41.17156247283371,0 -8.674978806275321,41.17217632987284,0 -8.673152203345142,41.17355278102877,0 -8.671256564922448,41.17480053983353,0 -8.670471322892908,41.17569004278456,0 -8.669448221968519,41.17638795185189,0 -8.669577834072298,41.17727987864004,0 -8.669430281456483,41.17868214519645,0 -8.668498109230153,41.17972917800494,0 -8.67033735336231,41.18114355891661,0 -8.671098839539274,41.18199175740452,0 -8.671552112204076,41.18283028999706,0 -8.670276800371369,41.18325775975674,0 -8.669626222763602,41.18366542495516,0 -8.669907427620442,41.18421235968868,0 -8.669188885844214,41.18466828520823,0 -8.668390100877302,41.18536696195051,0 -8.667358693141443,41.18571429776797,0 -8.666759235526136,41.18617995707436,0 -8.666722609237254,41.18672109489642,0 -8.667940415476776,41.18746770606788,0 -8.669289772081678,41.18822281742319,0 -8.671361672929196,41.18866265903406,0 -8.673252123068476,41.1889952340285,0 -8.676665651935286,41.18949500072397,0 -8.677346008829968,41.19002628475172,0 -8.678912124634358,41.19084977755426,0 -8.679509549025367,41.19219207850616,0 -8.680897180160613,41.19301661376348,0 -8.68151828635423,41.19386211287168,0 -8.681483270035667,41.19268545037392,0 -8.68241542419115,41.19115455734378,0 -8.685244579444699,41.18972047287394,0 -8.687917078589644,41.18908846210116,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Leça da Palmeira</name>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=40</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.701043122178826,41.18670515430032,0 -8.699704942964907,41.1870766721805,0 -8.699068298679267,41.18773397613769,0 -8.697954328075745,41.188387069057,0 -8.697222757313416,41.18884525782508,0 -8.696556229247916,41.18924717267633,0 -8.695696587083873,41.18967662934367,0 -8.695853096771284,41.19000290646729,0 -8.696214249291872,41.19056115124319,0 -8.696180406009436,41.19104108088323,0 -8.696109367742427,41.1918174634844,0 -8.69646645282544,41.19241546288684,0 -8.696699965914554,41.19277643985463,0 -8.69678600270063,41.19335067347807,0 -8.696626092033952,41.19492905374291,0 -8.696503001278424,41.19849765430462,0 -8.696431842807428,41.2000771511447,0 -8.69641342819804,41.20137317645872,0 -8.696415463546302,41.20162053590783,0 -8.697844410253131,41.2015272412814,0 -8.699150065129238,41.20143425788878,0 -8.701399275504308,41.20131061454472,0 -8.703080259711648,41.20121821296024,0 -8.70494740612313,41.20121783853717,0 -8.707116639327593,41.20124806666122,0 -8.70829188260471,41.2013399939033,0 -8.709813590106744,41.20137048155292,0 -8.710757285690402,41.20146283324997,0 -8.711220718754966,41.20094208267518,0 -8.711232458309064,41.19995632747518,0 -8.710772094129878,41.19883206399765,0 -8.708820791568247,41.19618614439695,0 -8.707036694261376,41.19351133185653,0 -8.705633459014816,41.19157545649905,0 -8.705078317494214,41.19045111323865,0 -8.70445549544575,41.18953460302858,0 -8.703902114468198,41.18865104719689,0 -8.702958148003212,41.18783606443792,0 -8.702340666120337,41.18721086860427,0 -8.701702767149271,41.1868508194239,0 -8.701043122178826,41.18670515430032,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Antas</name>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=42</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.583983236664681,41.16618980623788,0 -8.584720330662929,41.16637695499703,0 -8.586052411340031,41.16646219033752,0 -8.586682687487116,41.16671839268066,0 -8.587185374725511,41.16682111380496,0 -8.587649328876088,41.1664792619812,0 -8.588262497685754,41.16639403732282,0 -8.58872268501232,41.16608799633639,0 -8.588854784921372,41.16558061618078,0 -8.588985706082644,41.16529458262338,0 -8.589354026735821,41.16450930446312,0 -8.589655640357268,41.16424380877937,0 -8.591297153151851,41.16444282696006,0 -8.595071344727538,41.16489246467642,0 -8.598331061734889,41.16544561597659,0 -8.600063398394958,41.16147853307849,0 -8.598520082342334,41.16117587239894,0 -8.593789443572174,41.16055847289375,0 -8.592300899561101,41.16081130400571,0 -8.592293321871415,41.16044820014971,0 -8.592853654922752,41.15930736903502,0 -8.591492066425042,41.15895159623779,0 -8.591463166169294,41.15842875231914,0 -8.591065671670258,41.15655302739727,0 -8.58953153012235,41.15707760448803,0 -8.588194291537436,41.15733376264985,0 -8.587017941524056,41.15754538202187,0 -8.585859489843683,41.1577272465177,0 -8.584963657503115,41.15801614474771,0 -8.583937726011344,41.15836739386923,0 -8.583198367731836,41.15870496146953,0 -8.582706848647511,41.15901320233957,0 -8.581756583131845,41.15927619345684,0 -8.580894378935087,41.15940024914521,0 -8.580097237901894,41.15946232532204,0 -8.579397671006543,41.15961783772609,0 -8.578937995362864,41.15991428603073,0 -8.578404314845114,41.1603376190529,0 -8.577877212549513,41.16063696214895,0 -8.577441133472556,41.16082663452906,0 -8.576957798498992,41.16106441197891,0 -8.576427880851977,41.1613348148859,0 -8.575850783247533,41.16163819471231,0 -8.575236580126202,41.1620875595821,0 -8.574972284260339,41.16218418984071,0 -8.575371832233225,41.16292943083091,0 -8.576120558810553,41.16366569176646,0 -8.576305005859197,41.16427642394127,0 -8.576580338267121,41.16485869713468,0 -8.576886295123241,41.16536135019112,0 -8.577541782901827,41.16559709008901,0 -8.578018379929899,41.16532781740572,0 -8.578719473237049,41.16460877053947,0 -8.57925892434741,41.16429321328698,0 -8.579594028094252,41.16411111972806,0 -8.580199256656218,41.1640780911688,0 -8.580672214497501,41.16409464846355,0 -8.581728975758988,41.16450913711023,0 -8.582444210352449,41.16494258413326,0 -8.583282158918363,41.16568173025728,0 -8.583983236664681,41.16618980623788,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Hospital de São João</name>
+		<styleUrl>#msn_icon?color=1976d2&amp;id=2000&amp;scale=4</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.598885057196883,41.1785884996581,0 -8.598592564999011,41.1791676659595,0 -8.598207684023301,41.17982794982691,0 -8.597899716894302,41.18069680928796,0 -8.597499363480331,41.18142670128253,0 -8.597268376921612,41.18182063175011,0 -8.597114351164354,41.18224934097689,0 -8.596390766349817,41.18215661852823,0 -8.59539012493415,41.18184372959383,0 -8.594297098994382,41.18165828526583,0 -8.593727418439993,41.18177411626645,0 -8.593711784262739,41.18238822741209,0 -8.593865352572578,41.18341956606989,0 -8.593988253829339,41.18414968084988,0 -8.594095738744198,41.18494939274866,0 -8.594418881683625,41.18559849567674,0 -8.594665021117541,41.18632878482505,0 -8.595219526754857,41.18601582382528,0 -8.595928051174171,41.18550582794584,0 -8.596744247397041,41.18532039958303,0 -8.597237039879701,41.18516973456705,0 -8.598592137779331,41.18508863178334,0 -8.599408264375185,41.18520455044356,0 -8.600060395352694,41.18544074290065,0 -8.600556974772109,41.18575845482134,0 -8.601401206450625,41.18641258598994,0 -8.602096602251647,41.18781439929032,0 -8.602717454072041,41.18824431677802,0 -8.603537040846298,41.18889856475433,0 -8.604977465445106,41.18929111642132,0 -8.605474139974671,41.18929110779208,0 -8.605598155330386,41.18878637348169,0 -8.605547983099006,41.187085389343,0 -8.605646919750868,41.18577708502571,0 -8.607111756702693,41.18549670180062,0 -8.608874534115312,41.18523498044789,0 -8.608923956776817,41.18471170728655,0 -8.608129431255431,41.18469306019832,0 -8.607210805956582,41.18476785286265,0 -8.605721044760008,41.18454365572303,0 -8.604429934960555,41.18424469561902,0 -8.603436807736797,41.18402047294557,0 -8.602319560721213,41.18368413075633,0 -8.601251999921143,41.18325435910565,0 -8.603187889584955,41.17996601079615,0 -8.598885057196883,41.1785884996581,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Ribeira - Porto</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.609760406789519,41.14076497557566,0 -8.610068438512078,41.14155224172253,0 -8.611436766585307,41.1413872588798,0 -8.612059519957997,41.1413522412892,0 -8.612989127093565,41.14157337553438,0 -8.613810487195707,41.14132311920298,0 -8.614844114919141,41.14105203832879,0 -8.615690821743613,41.14076983865323,0 -8.616401397664987,41.14051273831531,0 -8.616428694685041,41.14022186388633,0 -8.616237003580101,41.14012259019332,0 -8.615937730573185,41.14003540200457,0 -8.615378481339043,41.13996146836774,0 -8.614614272535295,41.14003401044117,0 -8.613934038610626,41.14005315944826,0 -8.613515325673545,41.14009235163838,0 -8.612624305259143,41.14026084120605,0 -8.61151058631058,41.14042203410971,0 -8.6109915063308,41.14046693764407,0 -8.610317676848517,41.14056518948286,0 -8.610070194194918,41.14047712717879,0 -8.609643438761916,41.14055236392741,0 -8.609760406789519,41.14076497557566,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark>
+		<name>Ribeira - V.N.Gaia</name>
+		<styleUrl>#msn_ylw-pushpin</styleUrl>
+		<Polygon>
+			<tessellate>1</tessellate>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						-8.612176769938101,41.13817859927774,0 -8.613634774625504,41.1378928721708,0 -8.615079939288712,41.13760008591225,0 -8.616204790698539,41.1376365552175,0 -8.617215134780157,41.13768150916293,0 -8.618199449519324,41.13783428572749,0 -8.61886434437154,41.13800109798337,0 -8.619298813082427,41.13810330520583,0 -8.619952990514502,41.13824354773922,0 -8.620467246165086,41.13815528028557,0 -8.620854194893365,41.13835347074924,0 -8.621067965490749,41.13870223660961,0 -8.621341498231885,41.13920677933906,0 -8.621648834932085,41.1395616173706,0 -8.62205838674422,41.13988198506635,0 -8.622233383009837,41.13960260548887,0 -8.621291783431769,41.13811436620824,0 -8.620360820377003,41.1371350529202,0 -8.619280833936116,41.13671517530227,0 -8.618000059578636,41.13661778858521,0 -8.617008680879342,41.13660742485877,0 -8.615257974372888,41.13685887232818,0 -8.613454446909005,41.13727151616411,0 -8.612469818187868,41.13764779595745,0 -8.611589868758315,41.13781573970906,0 -8.609580111862032,41.1381482379879,0 -8.609215363411298,41.13853543641222,0 -8.609399988357829,41.13898658212849,0 -8.612176769938101,41.13817859927774,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+</Document>
+</kml>
